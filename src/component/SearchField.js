@@ -32,6 +32,7 @@ const SearchField = () => {
     <div className="flex md:max-w-[50%] min-w-[90%] md:min-w-[50%] h-10 mb-5">
       <div className="flex flex-1 relative">
         <input
+          id="inputText"
           className="bg-gray-100 text-sm w-full indent-2 rounded-lg pl-7 outline-none"
           type="search"
           placeholder="Телефоны, яблоки, груши..."
@@ -44,12 +45,14 @@ const SearchField = () => {
           className="absolute bottom-2 left-0 h-6 w-6"
           alt="wallpaper"
         ></img>
-        <button
-          onClick={clearClick}
-          className="text-white absolute top-2.5 right-2 bg-gray-400 rounded-full h-5 w-5 flex items-center justify-center"
-        >
-          <XIcon />
-        </button>
+        {searchValue ? (
+          <button
+            onClick={clearClick}
+            className="text-white absolute top-2.5 right-2 bg-gray-400 rounded-full h-5 w-5 flex items-center justify-center"
+          >
+            <XIcon />
+          </button>
+        ) : null}
       </div>
       <button
         onClick={buttonClick}

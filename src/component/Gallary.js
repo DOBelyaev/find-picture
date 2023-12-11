@@ -5,7 +5,7 @@ import Sceleton from "./Sceleton";
 import { ReactComponent as XIcon } from "./x.svg";
 
 const Gallary = () => {
-  const { response, showPicture, setShowPicture } = useContext(PictureContext);
+  const { response, showPicture, setShowPicture, isLoding } = useContext(PictureContext);
 
   if (response === null) {
     return null;
@@ -13,7 +13,7 @@ const Gallary = () => {
   if (response.length === 0) {
     return (
       <div className="relative h-14 w-full">
-        <h1 className="mx-5 absolute inset-x-0 bottom-0 text-gray-400">
+        <h1 className="absolute inset-x-0 bottom-0 text-gray-400">
           К сожалению, поиск не дал результатов
         </h1>
       </div>
@@ -27,12 +27,9 @@ const Gallary = () => {
   return (
     <>
       <div className="grid grid-cols-3 grid-rows-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-5">
-        {response
+        {!isLoding
           ? response.map((data, key) => <Picture key={key} data={data} />)
-          : null}
-        {response.length <= 10 ? (
-          <Sceleton item={18 - response.length} />
-        ) : null}
+          : <Sceleton item={18} />}
       </div>
       {showPicture ? (
         <div className="fixed top-0 left-0 right-0 bottom-0 sm:pt-3 flex justify-center bg-gray-950/50 items-start">
