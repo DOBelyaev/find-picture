@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useContext } from "react";
 import { PictureContext } from "../App";
 
@@ -7,17 +8,13 @@ const SearchFieldComp = ({ children }) => {
 
   return (
     <div
-      className={
-        response === null
-          ? "h-screen overflow-hidden"
-          : "h-screen overflow-auto p-5"
-      }
+      className={response === null ? "h-screen overflow-hidden" : "h-screen"}
     >
       <div
         className={
           response === null
-            ? "h-full flex flex-col bg-white justify-center items-center min-w-fit "
-            : "flex flex-col bg-white "
+            ? "h-full flex flex-col bg-white justify-center items-center"
+            : "flex flex-col bg-white relative"
         }
       >
         {children}
